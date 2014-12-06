@@ -5,7 +5,11 @@ void setup() {
 }
 
 void loop() {
-  int val = map(analogRead(potPin), 0, 1023, 1, 9);
+  /* 
+   * Reads 0 - 1023; but we should restrict input to
+   * 0 - 1000 in case potentiometer doesn't send the extreme end.
+   */
+  int val = map(analogRead(potPin), 0, 1000, 1, 9);
   Serial.println(val);
   delay(50);
 }
